@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Get-album</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel='stylesheet' href="style.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+    <body>
+        <div class="main">
+            <div id="top-bar" class="fluid-container px-5" style="z-index: 2000;">
+                <div class="level">
+                  <a href="index.html" style="text-decoration:none;">
+                    <div class="level-left">
+                      <div class="level-item">
+                        <span class="icon dark-icon">
+                          <i class="fa-solid fa-music"></i>
+                        </span>
+                        <p id="main-title" class="title is-1 has-text-centered" style="font-family: Ink Free;"><b><i>Get-album</i></b></p>
+                      </div>
+                      <div class="level-item">
+                        <p id="sub-title" class="subtitle is-4 has-text-centered" style="font-family: Ink Free;"><b><i>Best album store</i></b></p>
+                      </div>
+                    </div> 
+                  </a>   
+                </div>
+            </div>
+
+            <section class="hero is-flex-grow-1">
+              <div class="hero-head" style="position:sticky; top:0px; z-index: 1000;">
+                <nav class="navbar" role="navigation" aria-label="main navigation">
+                    <div class="navbar-brand">
+                      <span class="navbar-burger" id="hamburger" data-target="navbarBasicExample">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                      </span>
+                    </div>
+                    <div class="navbar-menu" id="navbarBasicExample">
+                      <div class="navbar-start">
+
+                          <div id="genres-container" class="navbar-item dropdown">
+                              <!-- <a class="navbar-link">
+                                  <span><b>Genres</b></span>
+                              </a> -->
+                              <div class="dropdown-trigger">
+                                <button id="genres-button" class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                                  <span><b>Genres</b></span>
+                                  <span class="icon is-small">
+                                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                  </span>
+                                </button>
+                              </div>
+                              <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                                <div class="dropdown-content">
+                                  <a id="thrash" class="dropdown-item" data-category="1">
+                                  thrash metal
+                                  </a>
+                                  <a id="heavy" class="dropdown-item" data-category="2">
+                                  heavy metal
+                                  </a>
+                                  <a id="death" class="dropdown-item" data-category="3">
+                                  death metal
+                                  </a>
+                                  <a id="power" class="dropdown-item" data-category="4">
+                                  power metal
+                                  </a>
+                                  <a id="black" class="dropdown-item" data-category="5">
+                                    black metal
+                                  </a>
+                                  <a id="nu" class="dropdown-item" data-category="6">
+                                    nu metal
+                                  </a>
+                                  <a id="hard" class="dropdown-item" data-category="7">
+                                    hard rock
+                                  </a>
+                                  <a id="jazz" class="dropdown-item" data-category="8">
+                                  jazz
+                                  </a>
+                                  <a id="pop" class="dropdown-item" data-category="9">
+                                  pop
+                                  </a>
+                                  <a id="polo" class="dropdown-item" data-category="10">
+                                  disco polo
+                                  </a>
+                                  <a id="dubstep" class="dropdown-item" data-category="11">
+                                    dubstep
+                                  </a>
+                                  <a id="techno" class="dropdown-item" data-category="12">
+                                    techno
+                                  </a>
+                                  <a id="rap" class="dropdown-item" data-category="13">
+                                    rap
+                                  </a>
+                                  <a id="classical" class="dropdown-item" data-category="14">
+                                    classical music
+                                  </a>
+                                  <a id="reggae" class="dropdown-item" data-category="15">
+                                    reggae
+                                  </a>
+                                  <a id="soundtracks" class="dropdown-item" data-category="16">
+                                    soundtracks
+                                  </a>
+                                </div>
+                              </div>
+                          </div>
+                          
+                          <!-- <div class="navbar-item">
+                            <div class="control">
+                              <label class="radio">
+                                <input id="search-title" type="radio" name="answer" checked>
+                                Search by title
+                              </label>
+                              <br/>
+                              <label class="radio">
+                                <input id="search-artist" type="radio" name="answer">
+                                Search by artist
+                              </label>
+                            </div>
+                          </div> -->
+
+                          <div class="navbar-item">
+                              <div id="input-container" class="field has-addons">
+                                  <div class="control has-icons-right">
+                                          <input id="search-value" class="input" name="title" type="text" placeholder="Enter title or artist" onkeydown="searchOnEnter(event, this)">                                         
+                                  </div>
+                                  <div class="control">
+                                    <a class="button" id="search-button">
+                                      <span class="icon is-small is-right">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                    </span>
+                                    </a>
+                                  </div>
+                              </div>
+                          </div>                    
+                      </div>
+
+                      <div class="navbar-end">
+
+                        <div id="history-container" class="navbar-item">
+                          <a href="client-history.html" style="text-decoration:none;" class="navbar-link is-arrowless" id="history-button">
+                            <span><b>Order history</b></span>
+                          </a>
+                        </div>
+
+                        <div id="settings-container" class="navbar-item">
+                          <a href="user-edit.html" style="text-decoration:none;" class="navbar-link is-arrowless" id="settings-button">
+                            <span><i class="fa fa-cog" aria-hidden="true"></i><b> Account Settings</b></span>
+                          </a>
+                        </div>
+
+                        <div id="login-container" class="navbar-item">
+                          <a href="login.html" style="text-decoration:none;" class="navbar-link is-arrowless" id="login-button">
+                            <span><b>Login/Register</b></span>
+                          </a>
+                        </div>
+
+                        <div id="logout-container" class="navbar-item">
+                          <a href="" style="text-decoration:none;" class="navbar-link is-arrowless" id="logout-button" onclick="performLogout(event)">
+                            <span><b>Logout</b></span>
+                          </a>
+                        </div>
+
+                        <div class="navbar-item">
+                          <a href="cart.html" style="text-decoration:none;">
+                            <span class="icon is-small mr-2">
+                              <i class="fa-solid fa-cart-shopping"></i>
+                            </span> 
+                            <span id="cart-total-price">0,00 zł</span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                </nav>
+              </div>
+
+              <div id="modal-container" class="invisible fade-in">
+                <div class="modal-card">
+                  
+                </div>
+              </div>
+              
+              <div class="hero-body">
+                <div class="hbox" id="product-list">
+
+                  <!-- <a href="product-details.html" style="text-decoration:none;">
+                    <div class="card" dataset-prod-id="1" onclick="">
+                      <div class="card-image" style="margin:1em;">
+                          <figure class="image">
+                              <img src="images/kill_em_all.jpeg" alt="album cover">
+                          </figure>
+                      </div>
+                      <hr style="margin: 0px;">
+                      <div class="card-content">
+                          <p class="title is-5">Kill 'Em All</p>
+                          <p class="title is-6">Metallica</p>
+                          <p class="subtitle is-5">X zł</p>
+                      </div>
+                    </div>
+                  </a>
+
+                  <a href="product-details.html" style="text-decoration:none;">
+                    <div class="card scale" dataset-prod-id="1" onclick="">
+                      <div class="card-image" style="margin:1em;">
+                          <figure class="image">
+                              <img src="images/ride_the_lightning.jpeg" alt="album cover">
+                          </figure>
+                      </div>
+                      <hr style="margin: 0px;">
+                      <div class="card-content">
+                          <p class="title is-5">Ride the Lightning</p>
+                          <p class="title is-6">Metallica</p>
+                          <p class="subtitle is-5">X zł</p>
+                      </div>
+                    </div>
+                  </a>
+
+                  <a href="product-details.html" style="text-decoration:none;">
+                    <div class="card scale" dataset-prod-id="1" onclick="">
+                      <div class="card-image" style="margin:1em;">
+                          <figure class="image">
+                              <img src="images/master_of_puppets.jpg" alt="album cover">
+                          </figure>
+                      </div>
+                      <hr style="margin: 0px;">
+                      <div class="card-content">
+                          <p class="title is-5">Master of Puppets</p>
+                          <p class="title is-6">Metallica</p>
+                          <p class="subtitle is-5">X zł</p>
+                      </div>
+                    </div>
+                  </a>
+
+                  <a href="product-details.html" style="text-decoration:none;">
+                    <div class="card scale" dataset-prod-id="1" onclick="">
+                      <div class="card-image" style="margin:1em;">
+                          <figure class="image">
+                              <img src="images/and_justice_for_all.jpg" alt="album cover">
+                          </figure>
+                      </div>
+                      <hr style="margin: 0px;">
+                      <div class="card-content">
+                          <p class="title is-5">...And Justice For All</p>
+                          <p class="title is-6">Metallica</p>
+                          <p class="subtitle is-5">X zł</p>
+                      </div>
+                    </div>
+                  </a>
+
+                  <a href="product-details.html" style="text-decoration:none;">
+                    <div class="card scale" dataset-prod-id="1" onclick="">
+                      <div class="card-image" style="margin:1em;">
+                          <figure class="image">
+                              <img src="images/black_album.jpg" alt="album cover">
+                          </figure>
+                      </div>
+                      <hr style="margin: 0px;">
+                      <div class="card-content">
+                          <p class="title is-5">Metallica</p>
+                          <p class="title is-6">Metallica</p>
+                          <p class="subtitle is-5">X zł</p>
+                      </div>
+                    </div>
+                  </a>
+
+                  <a href="product-details.html" style="text-decoration:none;">
+                    <div class="card scale" dataset-prod-id="1" onclick="">
+                      <div class="card-image" style="margin:1em;">
+                          <figure class="image">
+                              <img src="images/load.jpg" alt="album cover">
+                          </figure>
+                      </div>
+                      <hr style="margin: 0px;">
+                      <div class="card-content">
+                          <p class="title is-5">Load</p>
+                          <p class="title is-6">Metallica</p>
+                          <p class="subtitle is-5">X zł</p>
+                      </div>
+                    </div>
+                  </a>
+
+                  <a href="product-details.html" style="text-decoration:none;">
+                    <div class="card scale" dataset-prod-id="1" onclick="">
+                      <div class="card-image" style="margin:1em;">
+                          <figure class="image">
+                              <img src="images/reload.jpg" alt="album cover">
+                          </figure>
+                      </div>
+                      <hr style="margin: 0px;">
+                      <div class="card-content">
+                          <p class="title is-5">Reload</p>
+                          <p class="title is-6">Metallica</p>
+                          <p class="subtitle is-5">X zł</p>
+                      </div>
+                    </div>
+                  </a>
+
+                  <a href="product-details.html" style="text-decoration:none;">
+                    <div class="card scale" dataset-prod-id="1" onclick="">
+                      <div class="card-image" style="margin:1em;">
+                          <figure class="image">
+                              <img src="images/st_anger.jpg" alt="album cover">
+                          </figure>
+                      </div>
+                      <hr style="margin: 0px;">
+                      <div class="card-content">
+                          <p class="title is-5">St. Anger</p>
+                          <p class="title is-6">Metallica</p>
+                          <p class="subtitle is-5">X zł</p>
+                      </div>
+                    </div>
+                  </a>
+
+                  <a href="product-details.html" style="text-decoration:none;">
+                    <div class="card scale" dataset-prod-id="1" onclick="">
+                      <div class="card-image" style="margin:1em;">
+                          <figure class="image">
+                              <img src="images/death_magnetic.jpg" alt="album cover">
+                          </figure>
+                      </div>
+                      <hr style="margin: 0px;">
+                      <div class="card-content">
+                          <p class="title is-5">Death Magnetic</p>
+                          <p class="title is-6">Metallica</p>
+                          <p class="subtitle is-5">X zł</p>
+                      </div>
+                    </div>
+                  </a>
+
+                  <a href="product-details.html" style="text-decoration:none;">
+                    <div class="card scale" dataset-prod-id="1" onclick="">
+                      <div class="card-image" style="margin:1em;">
+                          <figure class="image">
+                              <img src="images/hardwired_to_self_destruct.jpg" alt="album cover">
+                          </figure>
+                      </div>
+                      <hr style="margin: 0px;">
+                      <div class="card-content">
+                          <p class="title is-5">Hardwired...to Self-Destruct</p>
+                          <p class="title is-6">Metallica</p>
+                          <p class="subtitle is-5">X zł</p>
+                      </div>
+                    </div>
+                  </a> -->
+                    
+                </div>
+              </div>
+            </section>
+
+            <!-- <div id="notification-box" class="p-2"></div> -->
+
+          
+
+        </div>
+
+        <script defer src="js/login.js"></script>
+        <script defer src="js/main-navbar.js"></script>
+        <script src="js/notification.js"></script>
+        <script src="js/products.js"></script>
+        <script src="js/prod-page.js"></script>
+        <script defer src="js/cart.js"></script>
+    </body>
+</html>

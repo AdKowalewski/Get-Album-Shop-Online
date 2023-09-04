@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Get-album</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel='stylesheet' href="style.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+    <body>
+        <div class="main">
+            <div id="top-bar" class="fluid-container px-5" style="z-index: 2000;">
+                <div class="level">
+                    <a href="index.html" style="text-decoration:none;">
+                        <div class="level-left">
+                          <div class="level-item">
+                            <span class="icon dark-icon">
+                                <i class="fa-solid fa-music"></i>
+                              </span>
+                            <p id="main-title" class="title is-1 has-text-centered" style="font-family: Ink Free;"><b><i>Get-album</i></b></p>
+                          </div>
+                          <div class="level-item">
+                            <p id="sub-title" class="subtitle is-4 has-text-centered" style="font-family: Ink Free;"><b><i>Best album store</i></b></p>
+                          </div>
+                        </div> 
+                      </a>     
+                </div>
+            </div>
+
+            <div class="hero-head" style="position:sticky; top:0px; z-index: 1000;">
+                <nav class="navbar" role="navigation" aria-label="main navigation">
+                    <div class="navbar-brand">
+                        <span class="navbar-burger" id="hamburger" data-target="navbarBasicExample">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                      </div>
+                    <div class="navbar-menu" id="navbarBasicExample">
+                      <div class="navbar-start">
+
+                        <div id="main-page-container" class="navbar-item">
+                            <a href="index.html" style="text-decoration:none;" class="navbar-link is-arrowless" id="account-button">
+                                <span><b>Main page</b></span>
+                            </a>
+                        </div>                                       
+                      </div>
+
+                      <div class="navbar-end">
+                        <div id="login-container" class="navbar-item">
+                          <a href="login.html" style="text-decoration:none;" class="navbar-link is-arrowless" id="account-button">
+                            <span><b>Login</b></span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                </nav>
+              </div>
+
+            <div class="login-register-form-container">
+                <form id="register-form" onsubmit="performRegister(event)" data-tab-content>
+                    <div class="field">
+                        <label for="name" class="label">Name</label>
+                        <div class="control">
+                        <input pattern="[^0-9]{3,}" class="input" type="text" placeholder="Name" name="name" oninvalid="this.setCustomValidity('Name should have at least 3 letters and should contain only letters')" onchange="this.setCustomValidity('')" required>
+                        </div>
+                    </div>
+        
+                    <div class="field">
+                        <label for="surname" class="label">Surname</label>
+                        <div class="control">
+                        <input pattern="[^0-9]{5,}" class="input" type="text" placeholder="Surname" name="surname" oninvalid="this.setCustomValidity('Surname should have at least 5 letters and should contain only letters')" onchange="this.setCustomValidity('')" required>
+                        </div>
+                    </div>
+        
+                    <div class="field">
+                    <label for="email" class="label">E-mail</label>
+                    <div class="control has-icons-left">
+                        <input class="input" type="email" placeholder="email@mail.com" name="email" oninvalid="this.setCustomValidity('Invalid email format')" onchange="this.setCustomValidity('')" required>
+                        <span class="icon is-small is-left">
+                        <i class="fas fa-envelope"></i>
+                        </span>
+                    </div>
+                    </div>
+        
+                    <div class="field">
+                        <label for="password" class="label">Password</label>
+                        <div class="control has-icons-left">
+                            <input minlength="8" class="input" type="password" placeholder="password" name="password" oninvalid="this.setCustomValidity('Password should have at least 8 characters')" onchange="this.setCustomValidity('')" required>
+                            <span class="icon is-small is-left">
+                            <i class="fa-solid fa-key"></i>
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="field">
+                        <div class="control">
+                        <button type="submit" class="button is-link is-fullwidth">Submit</button>
+                        </div>
+                    </div>
+                </form>
+
+                <div id="field-centered" class="field">
+                    <div>
+                        <p>Do You already have an account? <a href="login.html" style="text-decoration:none;">Log in</a></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="notification-area">
+            
+        </div>
+
+        <script defer src="js/login.js"></script>
+        <script src="js/notification.js"></script>
+        <script defer src="js/navbar.js"></script>
+    </body>
+</html>
